@@ -1,5 +1,6 @@
 # Ollama-WebUi-searxng-ComfyUI
 
+
 ## Overview
 
 This project sets up a private AI environment with advanced capabilities including image generation, web search integration, voice transcription, and text-to-speech. The setup is built using Docker and Docker Compose for streamlined deployment and management.
@@ -11,6 +12,7 @@ This project sets up a private AI environment with advanced capabilities includi
 - **OpenWebUI**: Provides a user-friendly interface and allows for easy integration with other tools.
 - **SearxNG**: Handles web search functionalities.
 - **ComfyUI**: Manages image generation tasks.
+- **FOR Ollama and ComfyUI you have to download A Model
 
 ## Getting Started
 
