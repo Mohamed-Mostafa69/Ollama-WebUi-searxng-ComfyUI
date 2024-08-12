@@ -1,0 +1,52 @@
+services:
+  ollama:
+    volumes:
+      - ~/.ollama:/root/.ollama
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: unless-stopped
+    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+
+  open-webui:
+    build:
+      context: .
+      args:
+        OLLAMA_BASE_URL: '/ollama'
+      dockerfile: Dockerfile
+    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+    container_name: open-webui
+    volumes:
+      - open-webui:/app/backend/data
+    depends_on:
+      - ollama
+    ports:
+      - ${OPEN_WEBUI_PORT-3000}:8080
+    environment:
+      - 'OLLAMA_BASE_URL=http://ollama:11434'
+      - 'WEBUI_SECRET_KEY='
+      - 'ENABLE_RAG_WEB_SEARCH: True'
+      - 'RAG_WEB_SEARCH_ENGINE: searxng'
+      - 'RAG_WEB_SEARCH_RESULT_COUNT: 3'
+      - 'RAG_WEB_SEARCH_CONCURRENT_REQUESTS: 10'
+      - 'SEARXNG_QUERY_URL: http://searxng:8080/search?q=<query>'
+      - 'COMFYUI_BASE_URL=http://127.0.0.1:8188'
+      - 'ENABLE_IMAGE_GENERATION=True'
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./searxng:/etc/searxng
+    restart: always
+
+
+volumes:
+  ollama: {}
+  open-webui: {}
+  search: {}
