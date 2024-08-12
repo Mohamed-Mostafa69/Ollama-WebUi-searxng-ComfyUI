@@ -20,6 +20,9 @@ This project sets up a private AI environment with advanced capabilities includi
 
 - Docker
 - Docker Compose
+- install an Ollama Model
+- install ComfyUI Model make sure its an checkpoint and store it in ComfyUI/model/checkpointi
+- run ComfyUI native
 
 ### Installation
 
@@ -36,6 +39,16 @@ This project sets up a private AI environment with advanced capabilities includi
 3. Start the services:
 
    docker-compose up -d
+
+## Resources
+
+- **Ollama: https://ollama.com/library/llama3.1
+- **Open-WebUI: https://github.com/open-webui/open-webui
+- **SearxNG: https://github.com/searxng/searxng
+- **ComfyUI: https://github.com/comfyanonymous/ComfyUI
+- **Downloading image model: https://civitai.com/
+
+
 
 ## Running ComfyUI
 
