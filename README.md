@@ -1,5 +1,10 @@
 # Ollama-WebUi-searxng-ComfyUI
 
+![ChatBot](Images/1.png)
+
+![ChatBotWithWebSearch](Images/2.png)
+
+![ChatBotImageGenerate](Images/3.png)
 
 ## Overview
 
